@@ -1,0 +1,4 @@
+Trade: {
+ carType=SEDAN
+ price=10001
+}
