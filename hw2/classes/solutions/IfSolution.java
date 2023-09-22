@@ -12,6 +12,7 @@ public class IfSolution extends AbstractSolution {
         super(carType, price);
     }
 
+    @Override
     public final Trade solve() {
         Trade result = null;
         switch(carType) {
