@@ -9,7 +9,7 @@ import hw2.classes.solutions.IfSolution;
 class Main {
 
     public static void main(String[] args) {
-        File inputFile = new File("hw2/data/file.txt");
+        File inputFile = new File(args[0]);
         // Can use file or System.in
         TradeReader reader = new TradeReader(inputFile);
         reader.scan();
