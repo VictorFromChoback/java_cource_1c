@@ -4,6 +4,7 @@ import java.io.File;
 
 import hw2.classes.solutions.EnumSolution;
 import hw2.classes.solutions.IfSolution;
+import hw2.input.TradeReader;
 
 
 class Main {
@@ -12,10 +13,9 @@ class Main {
         File inputFile = new File(args[0]);
         // Can use file or System.in
         TradeReader reader = new TradeReader(inputFile);
-        reader.scan();
-        reader.close();
+        TradeInput tradeInput = reader.getTradeInput();
 
-        IfSolution ifSolution = new IfSolution(reader.carType, reader.price);
+        IfSolution ifSolution = new IfSolution(tradeInput.carType, tradeInput.price);
         Trade ifTrade = ifSolution.solve();
         ifTrade.log();
 

@@ -1,13 +1,16 @@
-package hw2;
+package hw2.input;
 
 import java.io.File;
 import java.io.InputStream;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+
+import hw2.TradeGetter;
+import hw2.TradeInput;
 import hw2.classes.CarType;
 
 
-public class TradeReader {
+public class TradeReader extends TradeGetter {
     
     public CarType carType;
     public int price;
@@ -35,4 +38,9 @@ public class TradeReader {
         scanner.close();
     }
 
+    public TradeInput getTradeInput() {
+        this.scan();
+        this.close();
+        return new TradeInput(this.carType, this.price);
+    }
 }
