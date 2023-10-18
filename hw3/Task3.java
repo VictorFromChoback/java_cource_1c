@@ -2,18 +2,15 @@ package hw3;
 
 import java.util.HashMap;
 import java.util.ArrayList;
+import java.util.Map;
 
 
 public class Task3 {
     
-    public static HashMap<String, Integer> solve(ArrayList<String> words) {
-        HashMap<String, Integer> map = new HashMap<String, Integer>();
+    public static Map<String, Integer> solve(ArrayList<String> words) {
+        Map<String, Integer> map = new HashMap<String, Integer>();
         for (String word: words) {
-            if (!map.containsKey(word)) {
-                map.put(word, 1);
-            } else {
-                map.put(word, map.get(word) + 1);
-            }
+            map.merge(word, 1, (prev, one) -> prev + one);
         }
         return map;
     }

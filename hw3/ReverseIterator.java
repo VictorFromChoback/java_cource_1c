@@ -1,16 +1,16 @@
 package hw3;
 
 import java.util.Iterator;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.NoSuchElementException;
 
 
-public class ReversedWordsIterator<T> implements Iterator<T> {
+public class ReverseIterator<T> implements Iterator<T> {
     
-    ArrayList<T> array;
+    List<T> array;
     int index;
 
-    public ReversedWordsIterator(ArrayList<T> array) {
+    public ReverseIterator(List<T> array) {
         this.array = array;
         this.index = array.size();
     }
