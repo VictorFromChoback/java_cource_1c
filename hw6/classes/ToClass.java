@@ -12,11 +12,22 @@ public class ToClass {
     }
 
     public String toString() {
-        return "someString: " + this.someString + ", Value: " + Integer.toString(this.firstInt);
+        return "someString: " + this.someString 
+        + ", firstInt: " + Integer.toString(this.firstInt)
+        + ", secondInt: " + Integer.toString(this.secondInt);
     }
 
     public void setSomeString(String someString) {
         this.someString = someString;
+    }
+
+    private void setFirstInt(String someString) {
+        this.someString = someString;
+    }
+
+
+    public void setSecondInt(int secondInt) {
+        this.secondInt = secondInt;
     }
 
 }
