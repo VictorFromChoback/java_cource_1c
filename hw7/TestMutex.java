@@ -13,19 +13,18 @@ public class TestMutex {
 
     public void test() {
         List<Thread> threads = new ArrayList<>();
-        for (int i = 0; i < this.iters; ++i) {
-            TestMutex cur = this;
+        for (int i = 0; i < iters; ++i) {
             final int j = i;
             Thread thread = new Thread(new Runnable() {
                 public void run() {
-                    cur.mutex.lock();
+                    mutex.lock();
                     try {
                         Thread.sleep((j % 5) + 10);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                    cur.count += 1;
-                    cur.mutex.unlock();
+                    count += 1;
+                    mutex.unlock();
                 }
             });
             thread.start();
@@ -38,7 +37,7 @@ public class TestMutex {
                 e.printStackTrace();
             }
         }
-        if (this.count == this.iters) {
+        if (count == iters) {
             System.out.println("Mutex tests finished successfully");
         } else {
             System.out.println("Mutex tests failed");

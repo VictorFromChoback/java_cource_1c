@@ -9,15 +9,14 @@ public class TestSemaphore {
     public void test() {
         System.out.println("-------------------------------------------------------------------");
         System.out.println("Run semaphore tests");
-        TestSemaphore cur = this;
         Runnable runnable = new Runnable() {
             public void run() {
                 try {
-                    cur.semaphore.acquire();
+                    semaphore.acquire();
                     System.out.println("Started thread");
                     Thread.sleep(10);
                     System.out.println("Finished");
-                    cur.semaphore.release();    
+                    semaphore.release();    
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
