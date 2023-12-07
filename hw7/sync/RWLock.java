@@ -2,16 +2,12 @@ package hw7.sync;
 
 public class RWLock {
     
-    private Mutex mutex = new Mutex();
     private int readCount = 0;
     private boolean writeState = false;
 
-    public void readLock() {
-        mutex.lock();
+    public synchronized void readLock() {
         while (writeState && readCount == 0) {
-            mutex.unlock();
-            Thread.yield();
-            mutex.lock();
+            try {wait();} catch (InterruptedException e) {e.printStackTrace();}
         }
         if (!writeState) {
             writeState = true;
@@ -19,34 +15,29 @@ public class RWLock {
         } else {
             readCount += 1;
         }
-        mutex.unlock();
+        notify();
     }
 
-    public void readUnLock() {
-        mutex.lock();
+    public synchronized void readUnLock() {
         if (readCount == 1) {
             writeState = false;
             readCount = 0;
         } else {
             readCount -= 1;
         }
-        mutex.unlock();
+        notifyAll();
     }
 
-    public void lock() {
-        mutex.lock();
+    public synchronized void lock() {
         while (writeState) {
-            mutex.unlock();
-            Thread.yield();
-            mutex.lock();
+            try {wait();} catch (InterruptedException e) {e.printStackTrace();}
         }
         writeState = true;
-        mutex.unlock();
+        notifyAll();
     }
 
-    public void unlock() {
-        mutex.lock();
+    public synchronized void unlock() {
         writeState = false;
-        mutex.unlock();
+        notifyAll();
     }
 }

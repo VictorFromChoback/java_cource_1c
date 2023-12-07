@@ -38,6 +38,7 @@ public class TestRWLock {
         read_thread_1.start();
         read_thread_2.start();
         write_thread_1.start();
+        try {Thread.sleep(50);} catch (InterruptedException e) {e.printStackTrace();} 
         write_thread_2.start();
         read_thread_3.start();
         read_thread_4.start();
